@@ -6,6 +6,12 @@ import com.codemave.core.domain.entity.Category
 import com.codemave.core.domain.entity.Payment
 import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.conflate
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.map
 
 class PaymentDataSourceImpl @Inject constructor(
@@ -16,14 +22,17 @@ class PaymentDataSourceImpl @Inject constructor(
     }
 
     override suspend fun loadPaymentsFor(category: Category): Flow<List<Payment>> {
-        return paymentDao.findPaymentsByCategory(category.categoryId)
-            .map { paymentCategoryPair ->
-                paymentCategoryPair.values.flatMap { paymentList ->
-                    paymentList.map {
-                        it.fromEntity()
-                    }
-                }
+        return paymentDao.findPaymentsByCategory(category.categoryId).map { list ->
+            list.map {
+                it.fromEntity()
             }
+        }
+    }
+
+    override suspend fun loadAllPayments(): List<Payment> {
+        return paymentDao.findAll().map {
+            it.fromEntity()
+        }
     }
 
     private fun Payment.toEntity() = PaymentEntity(

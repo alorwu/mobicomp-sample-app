@@ -7,4 +7,6 @@ import kotlinx.coroutines.flow.Flow
 interface PaymentDataSource {
     suspend fun addPayment(payment: Payment)
     suspend fun loadPaymentsFor(category: Category): Flow<List<Payment>>
+
+    suspend fun loadAllPayments(): List<Payment>
 }

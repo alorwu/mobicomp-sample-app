@@ -11,6 +11,7 @@ object androidx {
             val preview = "androidx.compose.ui:ui-tooling-preview:$version"
         }
         val material = "androidx.compose.material:material:$version"
+        val material_icons = "androidx.compose.material:material-icons-extended:$version"
 
     }
 

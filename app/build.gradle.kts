@@ -60,6 +60,7 @@ dependencies {
     implementation(androidx.core.ktx)
     implementation(androidx.compose.ui.ui)
     implementation(androidx.compose.material)
+    implementation(androidx.compose.material_icons)
     implementation(androidx.compose.ui.preview)
     implementation(androidx.lifecycle.compose)
     implementation(androidx.navigation.compose)
@@ -67,6 +68,16 @@ dependencies {
     implementation(androidx.constraintlayout.compose)
 
     implementation(androidx.navigation.hilt.compose)
+
+
+    // Maps dependencies
+    implementation("com.google.maps.android:maps-ktx:3.3.0")
+    implementation("com.google.maps.android:maps-utils-ktx:3.3.0")
+    implementation("com.google.android.gms:play-services-maps:18.0.0")
+    implementation("com.google.maps.android:android-maps-utils:2.2.3")
+
+    implementation("com.google.android.gms:play-services-location:18.0.0")
+
 
     // Hilt for DI
     implementation("com.google.dagger:hilt-android:2.44.2")

@@ -17,4 +17,8 @@ class PaymentRepositoryImpl @Inject constructor(
     override suspend fun loadPaymentsFor(category: Category): Flow<List<Payment>> {
         return paymentDataSource.loadPaymentsFor(category)
     }
+
+    override suspend fun loadAllPayments(): List<Payment> {
+        return paymentDataSource.loadAllPayments()
+    }
 }

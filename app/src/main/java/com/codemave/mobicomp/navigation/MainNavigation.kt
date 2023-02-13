@@ -6,6 +6,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.codemave.mobicomp.ui.HomeScreen
 import com.codemave.mobicomp.ui.login.LoginScreen
+import com.codemave.mobicomp.ui.maps.PaymentLocation
 import com.codemave.mobicomp.ui.payment.PaymentScreen
 
 @Composable
@@ -26,6 +27,9 @@ fun MainNavigation() {
 
         composable("payments") {
                 PaymentScreen(navController = navController)
+        }
+        composable("map") {
+            PaymentLocation(navController = navController)
         }
     }
 }
